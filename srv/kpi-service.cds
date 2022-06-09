@@ -7,6 +7,7 @@ service KpiService {
 
 annotate db.NAST with @(
     Aggregation.ApplySupported.PropertyRestrictions : true,
+    Aggregation,
     UI                                              : {
         Chart           : {
             $Type               : 'UI.ChartDefinitionType',

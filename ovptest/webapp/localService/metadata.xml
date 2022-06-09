@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Aggregation.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Analytics.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Analytics" Namespace="com.sap.vocabularies.Analytics.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="KpiService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="NAST" EntityType="KpiService.NAST" sap:semantics="aggregate"/>
+            </EntityContainer>
+            <EntityType Name="NAST" sap:semantics="aggregate">
+                <Key>
+                    <PropertyRef Name="ID__"/>
+                </Key>
+                <Property Name="ID__" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DOC_ID" Type="Edm.String" MaxLength="32"/>
+                <Property Name="PDOC_ID" Type="Edm.String" MaxLength="32"/>
+                <Property Name="MOVIND" Type="Edm.String" MaxLength="1"/>
+                <Property Name="PSTYPE" Type="Edm.String" MaxLength="40" sap:label="Item Category"/>
+                <Property Name="PSART" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DOCNR" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DOCPOSNR" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DOCTYPE" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DOCAPPL" Type="Edm.String" MaxLength="40"/>
+                <Property Name="RDOCNR" Type="Edm.String" MaxLength="40"/>
+                <Property Name="RDOCPOSNR" Type="Edm.String" MaxLength="40"/>
+                <Property Name="RDOCTYPE" Type="Edm.String" MaxLength="40"/>
+                <Property Name="KUNWE" Type="Edm.String" MaxLength="40"/>
+                <Property Name="MATNR" Type="Edm.String" MaxLength="40"/>
+                <Property Name="BWTAR" Type="Edm.String" MaxLength="40"/>
+                <Property Name="OIHANTYP" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DOCQTY" Type="Edm.Decimal" Scale="3" Precision="7" sap:aggregation-role="measure"/>
+                <Property Name="DOCUOM" Type="Edm.String" MaxLength="40"/>
+                <Property Name="WERKS" Type="Edm.String" MaxLength="40"/>
+                <Property Name="LGORT" Type="Edm.String" MaxLength="40"/>
+                <Property Name="VKORG" Type="Edm.String" MaxLength="40"/>
+                <Property Name="VTWEG" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SPART" Type="Edm.String" MaxLength="40"/>
+                <Property Name="MDMM" Type="Edm.String" MaxLength="40"/>
+                <Property Name="MDMM_DOCQTY" Type="Edm.String" MaxLength="40"/>
+                <Property Name="MDMM_DOCUOM" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TDLVZN" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DLVZN" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="Delivery Zone"/>
+                <Property Name="IDMDOCTYPE" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PDLVDF" Type="Edm.DateTime" sap:aggregation-role="dimension" sap:label="Planned Date From" sap:display-format="Date"/>
+                <Property Name="PDLVDT" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="PDLVTF" Type="Edm.Time"/>
+                <Property Name="PDLVTT" Type="Edm.Time"/>
+                <Property Name="IDLVDF" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="IDLVTF" Type="Edm.Time"/>
+                <Property Name="BU_PARTNER" Type="Edm.String" MaxLength="40"/>
+                <Property Name="NOTE_DRV" Type="Edm.String" MaxLength="40"/>
+                <Property Name="NOTE_DSP" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PRIORITY" Type="Edm.String" MaxLength="40"/>
+                <Property Name="COLL_ORD_ID" Type="Edm.String" MaxLength="40"/>
+                <Property Name="KTMNG" Type="Edm.String" MaxLength="40"/>
+                <Property Name="KDATB" Type="Edm.String" MaxLength="40"/>
+                <Property Name="KDATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="ERNAM" Type="Edm.String" MaxLength="12" sap:label="Created By"/>
+                <Property Name="CHGTST" Type="Edm.Decimal" Scale="7" Precision="21"/>
+                <Property Name="FLAG_NEW" Type="Edm.String" MaxLength="1"/>
+                <Property Name="FLAG_UPD" Type="Edm.String" MaxLength="1"/>
+                <Property Name="FLAG_DEL" Type="Edm.String" MaxLength="1"/>
+                <Property Name="GEOLON" Type="Edm.Decimal" Scale="12" Precision="15"/>
+                <Property Name="GEOLAT" Type="Edm.Decimal" Scale="12" Precision="15"/>
+            </EntityType>
+            <Annotations Target="KpiService.NAST" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record Type="Aggregation.ApplySupportedType">
+                        <PropertyValue Property="PropertyRestrictions" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Chart">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>DOCQTY</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="DOCQTY"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>DLVZN</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="DLVZN"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>DOCQTY</PropertyPath>
+                        <PropertyPath>PSTYPE</PropertyPath>
+                        <PropertyPath>PDLVDF</PropertyPath>
+                        <PropertyPath>DLVZN</PropertyPath>
+                        <PropertyPath>ERNAM</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DOCQTY"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PSTYPE"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PDLVDF"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DLVZN"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ERNAM"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="KpiService.EntityContainer/NAST" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record Type="Aggregation.ApplySupportedType">
+                        <PropertyValue Property="PropertyRestrictions" Bool="true"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="KpiService.NAST/ID__" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="KpiService.NAST/PSTYPE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Item Category"/>
+            </Annotations>
+            <Annotations Target="KpiService.NAST/DOCQTY" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Analytics.Measure" Bool="true"/>
+            </Annotations>
+            <Annotations Target="KpiService.NAST/DLVZN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Analytics.Dimension" Bool="true"/>
+                <Annotation Term="Common.Label" String="Delivery Zone"/>
+            </Annotations>
+            <Annotations Target="KpiService.NAST/PDLVDF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Analytics.Dimension" Bool="true"/>
+                <Annotation Term="Common.Label" String="Planned Date From"/>
+            </Annotations>
+            <Annotations Target="KpiService.NAST/ERNAM" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
