@@ -8,7 +8,7 @@ entity NAST {
     key DOC_ID      : String(32);
         PDOC_ID     : String(32);
         MOVIND      : String(1);
-        PSTYPE      : String(40);
+        PSTYPE      : String(40)@title : '{i18n>ItemCategory}';
         PSART       : String(40);
         DOCNR       : String(40);
         DOCPOSNR    : String(40);
@@ -32,9 +32,9 @@ entity NAST {
         MDMM_DOCQTY : String(40);
         MDMM_DOCUOM : String(40);
         TDLVZN      : String(40);
-        DLVZN       : String(40);
+        DLVZN       : String(40) @title : '{i18n>DeliveryZone}';
         IDMDOCTYPE  : String(40);
-        PDLVDF      : Date;
+        PDLVDF      : Date @title : '{i18n>PlannedDateFr}';
         PDLVDT      : Date;
         PDLVTF      : Time;
         PDLVTT      : Time;
@@ -48,7 +48,7 @@ entity NAST {
         KTMNG       : String(40);
         KDATB       : String(40);
         KDATE       : Date;
-        ERNAM       : String(12);
+        ERNAM       : String(12) @title : '{i18n>CreatedBy}';
         CHGTST      : Decimal(21, 7);
         FLAG_NEW    : String(1);
         FLAG_UPD    : String(1);

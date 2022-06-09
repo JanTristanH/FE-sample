@@ -1,4 +1,27 @@
-# Getting Started
+# FE Analylitcal Page
+
+## How to get more Nast data
+
+Run a Report with similar code as shown below on your SAP system from Hana Studio:
+
+```ABAP
+REPORT zthe_steal_nast.
+
+select * From /btl/tr_nast into table @data(lt_res) up to 20 rows.
+
+BREAK-POINT.
+```
+
+Then copy the data from the internal table into a file called `nast.csv`. This can be done by right clicking on the table data in debugger and selecting `Export to File...`. Be sure to update the file extension to `.csv`.
+
+Then open the file in Excel and remove the first and last column.
+Save the file into `./db/data` as `db.NAST.csv`.
+
+The updated content of the file will be served by CAP.
+
+If you want to use CHGTST, GEO lat & lon you may have to adjust the format of those numbers (only one `.` allowed).
+
+## Getting Started
 
 Welcome to your new project.
 
