@@ -56,14 +56,14 @@ annotate db.NAST with @(
         SelectionFields            : [
             DOCQTY,
             PSTYPE,
-            PDLVDF,
+            //PDLVDF,
             DLVZN,
             ERNAM
         ],
         LineItem                   : [
             {Value : DOCQTY},
             {Value : PSTYPE},
-            {Value : PDLVDF},
+            //{Value : PDLVDF},
             {Value : DLVZN},
             {Value : ERNAM},
         ],
@@ -94,5 +94,5 @@ annotate db.NAST with @(
     );
     DLVZN  @(Analytics.Dimension : true);
     PSTYPE @(Analytics.Dimension : true);
-PDLVDF @(Analytics.Dimension : true)
+//PDLVDF @(Analytics.Dimension : true)
 };
