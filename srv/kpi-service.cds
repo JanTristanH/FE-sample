@@ -108,6 +108,23 @@ annotate db.NAST with @(
                 Role      : #Category
             }]
         },
+
+        Chart #QUANTITYBYDAY               : {
+            $Type               : 'UI.ChartDefinitionType',
+            ChartType           : #Line,
+            Measures            : ['DOCQTY'],
+            MeasureAttributes   : [{
+                $Type   : 'UI.ChartMeasureAttributeType',
+                Measure : 'DOCQTY',
+                Role    : #Axis1
+            }],
+            Dimensions          : ['PDLVDF'],
+            DimensionAttributes : [{
+                $Type     : 'UI.ChartDimensionAttributeType',
+                Dimension : 'PDLVDF',
+                Role      : #Category
+            }]
+        },
         Facets                     : [{
             $Type  : 'UI.ReferenceFacet',
             Label  : '{i18n>Details}',

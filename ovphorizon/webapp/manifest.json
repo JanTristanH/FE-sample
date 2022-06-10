@@ -134,6 +134,15 @@
         "entitySet": "NAST",
         "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#DLVZN"
       }
+    },
+    "chart02": {
+      "model": "mainModel",
+      "template": "sap.ovp.cards.charts.analytical",
+      "settings": {
+        "title": "Quantity Chart Date",
+        "entitySet": "NAST",
+        "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#QUANTITYBYDAY"
+      }
     }
   }
   },
