@@ -17,6 +17,12 @@ service KpiService {
         select from NAST distinct {
             key PSTYPE
         };
+    @readonly
+    @cds.odata.valuelist
+    entity CreatedByVH as
+        select from NAST distinct {
+            key ERNAM
+        };
 
 }
 
@@ -46,6 +52,19 @@ annotate db.NAST with {
         }]
     }
     PSTYPE @(ValueList.entity : 'PstypeVH');
+
+    @Common.ValueListWithFixedValues : true
+    @Common.ValueList                : {
+        $Type          : 'Common.ValueListType',
+        Label          : 'ERNAM',
+        CollectionPath : 'NAST',
+        Parameters     : [{
+            $Type             : 'Common.ValueListParameterInOut',
+            LocalDataProperty : 'ERNAM',
+            ValueListProperty : 'ERNAM'
+        }]
+    }
+    ERNAM @(ValueList.entity : 'CreatedByVH');
 };
 
 
@@ -56,14 +75,14 @@ annotate db.NAST with @(
         SelectionFields            : [
             DOCQTY,
             PSTYPE,
-            //PDLVDF,
+            PDLVDF,
             DLVZN,
             ERNAM
         ],
         LineItem                   : [
             {Value : DOCQTY},
             {Value : PSTYPE},
-            //{Value : PDLVDF},
+            {Value : PDLVDF},
             {Value : DLVZN},
             {Value : ERNAM},
         ],
@@ -94,7 +113,7 @@ annotate db.NAST with @(
         FieldGroup #Details        : {Data : [
             {Value : DOCQTY},
             {Value : PSTYPE},
-            //{Value : PDLVDF},
+            {Value : PDLVDF},
             {Value : DLVZN},
             {Value : ERNAM},
 
@@ -108,5 +127,5 @@ annotate db.NAST with @(
     );
     DLVZN  @(Analytics.Dimension : true);
     PSTYPE @(Analytics.Dimension : true);
-//PDLVDF @(Analytics.Dimension : true)
+    PDLVDF @(Analytics.Dimension : true)
 };
