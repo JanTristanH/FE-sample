@@ -65,6 +65,9 @@ annotate db.NAST with {
         }]
     }
     ERNAM @(ValueList.entity : 'CreatedByVH');
+
+    @Common.IsCalendarDate
+    PDLVDF
 };
 
 
