@@ -34,11 +34,11 @@ entity NAST {
         TDLVZN      : String(40);
         DLVZN       : String(40) @title : '{i18n>DeliveryZone}';
         IDMDOCTYPE  : String(40);
-        PDLVDF      : Date @title : '{i18n>PlannedDateFr}';
-        PDLVDT      : Date;
+        PDLVDF      : String(40) @title : '{i18n>PlannedDateFr}'; //Date
+        PDLVDT      : String(40); //Date;
         PDLVTF      : Time;
         PDLVTT      : Time;
-        IDLVDF      : Date;
+        IDLVDF      : String(40); //Date;
         IDLVTF      : Time;
         BU_PARTNER  : String(40);
         NOTE_DRV    : String(40);
@@ -47,7 +47,7 @@ entity NAST {
         COLL_ORD_ID : String(40);
         KTMNG       : String(40);
         KDATB       : String(40);
-        KDATE       : Date;
+        KDATE       : String(40); //Date;
         ERNAM       : String(12) @title : '{i18n>CreatedBy}';
         CHGTST      : Decimal(21, 7);
         FLAG_NEW    : String(1);
