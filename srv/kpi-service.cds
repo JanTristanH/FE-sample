@@ -86,7 +86,21 @@ annotate db.NAST with @(
                 Role      : #Category
             }]
         },
+        Facets                     : [{
+            $Type  : 'UI.ReferenceFacet',
+            Label  : '{i18n>Details}',
+            Target : '@UI.FieldGroup#Details'
+        }, ],
+        FieldGroup #Details        : {Data : [
+            {Value : DOCQTY},
+            {Value : PSTYPE},
+            //{Value : PDLVDF},
+            {Value : DLVZN},
+            {Value : ERNAM},
+
+        ]}
     }
+
 ) {
     DOCQTY @(
         Analytics.Measure   : true,
