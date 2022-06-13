@@ -118,33 +118,45 @@
         "model": "mainModel",
         "template": "sap.ovp.cards.list",
         "settings": {
-            "title": "Nast List",
-            "entitySet": "NAST",
-            "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-            "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant",
-            "annotationPath": "com.sap.vocabularies.UI.v1.LineItem"
+          "title": "Nast List",
+          "entitySet": "NAST",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant",
+          "annotationPath": "com.sap.vocabularies.UI.v1.LineItem"
         }
       },
 
-    "chart01": {
-      "model": "mainModel",
-      "template": "sap.ovp.cards.charts.analytical",
-      "settings": {
-        "title": "Nast Chart",
-        "entitySet": "NAST",
-        "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#DLVZN"
-      }
-    },
-    "chart02": {
-      "model": "mainModel",
-      "template": "sap.ovp.cards.charts.analytical",
-      "settings": {
-        "title": "Quantity Chart Date",
-        "entitySet": "NAST",
-        "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#QUANTITYBYDAY"
+      "chart01": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Nast Chart",
+          "entitySet": "NAST",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#DLVZN"
+        }
+      },
+      "chart02": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Quantity Chart Date",
+          "entitySet": "NAST",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#QUANTITYBYDAY"
+        }
+      },
+      "card_linklist_Carousel": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.linklist",
+        "settings": {
+          "title": "Recent Cusomers",
+          "entitySet": "Customers",
+          "listFlavor": "carousel",
+          "sortBy": "KUNWE",
+          "sortOrder": "ascending",
+          "headerAnnotationPath": "com.sap.vocabularies.UI.v1.HeaderInfo#header1"
+        }
       }
     }
-  }
   },
   "sap.fiori": {
     "registrationIds": [],

@@ -2,21 +2,47 @@ using {db} from '../db/schema';
 
 service KpiService {
 
-    entity NAST     as projection on db.NAST;
+    entity NAST        as projection on db.NAST;
+
+    @Communication.Contact #identify1 : {title : KUNWE,
+    // org : CompanyName,
+    // role : OrganizationRole,
+    // tel : [
+    //     {
+    //         type : #fax,
+    //         uri : FaxNumber
+    //     },
+    //     {
+    //         type : [ #work, #pref ],
+    //         uri : PhoneNumber
+    //     }
+    // ],
+    email : [
+        {
+            type : [ #pref, #work ],
+            address : KUNWE
+        }
+    ]
+    }
+    entity Customers   as
+        select from NAST distinct {
+            key KUNWE
+        };
 
     @readonly
     @cds.odata.valuelist
-    entity DlvznVH  as
+    entity DlvznVH     as
         select from NAST distinct {
             key DLVZN
         };
 
     @readonly
     @cds.odata.valuelist
-    entity PstypeVH as
+    entity PstypeVH    as
         select from NAST distinct {
             key PSTYPE
         };
+
     @readonly
     @cds.odata.valuelist
     entity CreatedByVH as
@@ -26,7 +52,32 @@ service KpiService {
 
 }
 
-annotate db.NAST with {
+annotate KpiService.Customers with @(
+
+
+UI : {
+
+HeaderInfo #header1 : {
+    $Type          : 'UI.HeaderInfoType',
+    TypeName       : 'Product',
+    TypeNamePlural : 'Products',
+    Title          : {
+        $Type : 'UI.DataField',
+        Label : 'Customer Name',
+        Value : KUNWE
+    },
+    Description    : {
+        $Type : 'UI.DataField',
+        Label : 'Product Description',
+        Value : KUNWE
+    },
+//  TypeImageUrl : ImageUrl
+}}
+
+);
+
+
+annotate KpiService.NAST with {
     @Common                          : {ValueList #DlvznVisualFilter : {
         $Type                        : 'Common.ValueListType',
         CollectionPath               : 'NAST',
@@ -64,14 +115,14 @@ annotate db.NAST with {
             ValueListProperty : 'ERNAM'
         }]
     }
-    ERNAM @(ValueList.entity : 'CreatedByVH');
+    ERNAM  @(ValueList.entity : 'CreatedByVH');
 
     @Common.IsCalendarDate
     PDLVDF
 };
 
 
-annotate db.NAST with @(
+annotate KpiService.NAST with @(
     Aggregation.ApplySupported.PropertyRestrictions : true,
     Aggregation,
     UI                                              : {
@@ -109,7 +160,7 @@ annotate db.NAST with @(
             }]
         },
 
-        Chart #QUANTITYBYDAY               : {
+        Chart #QUANTITYBYDAY       : {
             $Type               : 'UI.ChartDefinitionType',
             ChartType           : #Line,
             Measures            : ['DOCQTY'],
