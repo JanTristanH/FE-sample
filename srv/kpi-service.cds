@@ -136,6 +136,11 @@ annotate KpiService.NAST with @(
             ERNAM
         ],
         LineItem                   : [
+                {
+            $Type          : 'UI.DataFieldForIntentBasedNavigation',
+            SemanticObject : 'Incident',
+            Action         : 'display'
+            },
             {Value : DOCQTY},
             {Value : PSTYPE},
             {Value : PDLVDF},
