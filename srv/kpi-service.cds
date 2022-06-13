@@ -4,29 +4,10 @@ service KpiService {
 
     entity NAST        as projection on db.NAST;
 
-    @Communication.Contact #identify1 : {title : KUNWE,
-    // org : CompanyName,
-    // role : OrganizationRole,
-    // tel : [
-    //     {
-    //         type : #fax,
-    //         uri : FaxNumber
-    //     },
-    //     {
-    //         type : [ #work, #pref ],
-    //         uri : PhoneNumber
-    //     }
-    // ],
-    email : [
-        {
-            type : [ #pref, #work ],
-            address : KUNWE
-        }
-    ]
-    }
     entity Customers   as
         select from NAST distinct {
-            key KUNWE
+            key KUNWE,
+                'mail.' || KUNWE || '@testmail.com' as mail : String(36)
         };
 
     @readonly
@@ -53,26 +34,47 @@ service KpiService {
 }
 
 annotate KpiService.Customers with @(
-
-
-UI : {
-
-HeaderInfo #header1 : {
-    $Type          : 'UI.HeaderInfoType',
-    TypeName       : 'Product',
-    TypeNamePlural : 'Products',
-    Title          : {
-        $Type : 'UI.DataField',
-        Label : 'Customer Name',
-        Value : KUNWE
+    Communication.Contact #identify1 : {
+        title : KUNWE,
+        //org : mail,
+        // role : OrganizationRole,
+        // tel : [
+        //     {
+        //         type : #fax,
+        //         uri : FaxNumber
+        //     },
+        //     {
+        //         type : [ #work, #pref ],
+        //         uri : PhoneNumber
+        //     }
+        // ],
+        // email : [{
+        //     type    : #work,
+        //     address : mail
+        // }]
     },
-    Description    : {
-        $Type : 'UI.DataField',
-        Label : 'Product Description',
-        Value : KUNWE
-    },
-//  TypeImageUrl : ImageUrl
-}}
+
+    UI                               : {
+        LineItem                   : [
+            {Value : KUNWE, Url: 'sap.com'}],
+
+    HeaderInfo #header1 : {
+        $Type          : 'UI.HeaderInfoType',
+        TypeName       : 'Product',
+        TypeNamePlural : 'Products',
+        Title          : {
+            $Type : 'UI.DataField',
+            Label : 'Customer Name',
+            Value : KUNWE
+        },
+        Description    : {
+            $Type : 'UI.DataField',
+            Label : 'Product Description',
+            Value : KUNWE
+        },
+        TypeImageUrl   : 'sap-icon://customer',
+        
+    }}
 
 );
 
