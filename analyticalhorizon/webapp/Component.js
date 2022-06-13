@@ -3,7 +3,7 @@ sap.ui.define(
     function (Component) {
         "use strict";
 
-        return Component.extend("dome.analyticalhorizon.Component", {
+        return Component.extend("demo.analyticalhorizon.Component", {
             metadata: {
                 manifest: "json"
             }

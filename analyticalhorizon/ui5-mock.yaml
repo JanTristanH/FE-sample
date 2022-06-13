@@ -2,7 +2,7 @@
 
 specVersion: "2.5"
 metadata:
-  name: dome.analyticalhorizon
+  name: demo.analyticalhorizon
 type: application
 server:
   customMiddleware:
