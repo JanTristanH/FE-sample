@@ -143,7 +143,8 @@ annotate KpiService.NAST with @(
             {Value : ERNAM},
         ],
 
-        PresentationVariant #DLVZN : {Visualizations : ['@UI.Chart#DLVZN', ], },
+        PresentationVariant #DLVZN : {Visualizations : ['@UI.Chart#DLVZN'] },
+        
 
         Chart #DLVZN               : {
             $Type               : 'UI.ChartDefinitionType',
@@ -178,6 +179,21 @@ annotate KpiService.NAST with @(
                 Role      : #Category
             }]
         },
+
+        Chart #Unloadings               : {
+        ChartType           : #Column,
+        Dimensions          : [PSTYPE],
+        DimensionAttributes : [{
+        Dimension : PSTYPE,
+        Role      : #Category
+        }],
+        Measures            : [DOCQTY],
+        MeasureAttributes   : [{
+        Measure : DOCQTY,
+        Role    : #Axis1
+        }]
+    },
+
         Facets                     : [{
             $Type  : 'UI.ReferenceFacet',
             Label  : '{i18n>Details}',
@@ -198,6 +214,7 @@ annotate KpiService.NAST with @(
         Analytics.Measure   : true,
         Aggregation.default : #SUM
     );
+    
     DLVZN  @(Analytics.Dimension : true);
     PSTYPE @(Analytics.Dimension : true);
     PDLVDF @(Analytics.Dimension : true)

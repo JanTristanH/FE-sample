@@ -135,6 +135,15 @@
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#DLVZN"
         }
       },
+      "chart03": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Chart",
+          "entitySet": "NAST",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#Unloadings"
+        }
+      },
       "chart02": {
         "model": "mainModel",
         "template": "sap.ovp.cards.charts.analytical",
