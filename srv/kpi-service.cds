@@ -152,7 +152,7 @@ annotate KpiService.NAST with {
     //     }]
     // }}
     @Common.IsCalendarDate
-    PDLVDF
+    PDLVDF;
 };
 
 
@@ -184,7 +184,8 @@ annotate KpiService.NAST with @(
         PresentationVariant #DLVZN         : {Visualizations : ['@UI.Chart#DLVZN']},
         PresentationVariant #QtyByPstype   : {Visualizations : ['@UI.Chart#Unloadings']},
         PresentationVariant #QUANTITYBYDAY : {Visualizations : ['@UI.Chart#QUANTITYBYDAY']},
-
+        PresentationVariant #MaterialMovementCount : {Visualizations : ['@UI.Chart']},
+                
 
         Chart #DLVZN                       : {
             $Type               : 'UI.ChartDefinitionType',
@@ -234,7 +235,8 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Chart #CountPerMaterial                  : {
+        //unnamed chart is used as interactive chart
+        Chart                  : {
             ChartType           : #Column,
             Dimensions          : [MATNR],
             DimensionAttributes : [{
