@@ -141,16 +141,16 @@ annotate KpiService.NAST with {
     }
     KUNWE  @(ValueList.entity : 'KUNWEVH');
 
-    //     @Common                          : {ValueList #QUANTITYBYDAY : {
-    //     $Type                        : 'Common.ValueListType',
-    //     CollectionPath               : 'NAST',
-    //     PresentationVariantQualifier : 'QUANTITYBYDAY',
-    //     Parameters                   : [{
-    //         $Type             : 'Common.ValueListParameterInOut',
-    //         LocalDataProperty : 'PDLVDF',
-    //         ValueListProperty : 'PDLVDF'
-    //     }]
-    // }}
+        @Common                          : {ValueList #QUANTITYBYDAY : {
+        $Type                        : 'Common.ValueListType',
+        CollectionPath               : 'NAST',
+        PresentationVariantQualifier : 'QUANTITYBYDAY',
+        Parameters                   : [{
+            $Type             : 'Common.ValueListParameterInOut',
+            LocalDataProperty : 'PDLVDF',
+            ValueListProperty : 'PDLVDF'
+        }]
+    }}
     @Common.IsCalendarDate
     PDLVDF;
 };
