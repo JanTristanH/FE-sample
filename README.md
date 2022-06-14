@@ -34,7 +34,17 @@ Save the file into `./db/data` as `db.NAST.csv`.
 
 The updated content of the file will be served by CAP.
 
+## Helpful information sources
+
+- blog by Georg to get started ![here](https://blogs.sap.com/2021/03/14/discovering-sap-fiori-elements-analytical-functions-by-implementing-sap-support-message-reporting/)
+- run from command pallet: `Firori: Open Guided Development` -> nice way to explore the capabilities of the Fiori Elements
+
 If you want to use CHGTST, GEO lat & lon you may have to adjust the format of those numbers (only one `.` allowed).
+
+## Note
+
+The horizen theme is the newest and only available on cloud.
+The newest Ui5 version does not seem compatible, please check before updating.
 
 ## Getting Started
 
