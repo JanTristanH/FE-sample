@@ -33,7 +33,7 @@ service KpiService {
 
     @readonly
     @cds.odata.valuelist
-    entity KUNWEVH as
+    entity KUNWEVH     as
         select from NAST distinct {
             key KUNWE
         };
@@ -103,7 +103,7 @@ annotate KpiService.NAST with {
     DLVZN  @(ValueList.entity : 'DlvznVH');
 
     @Common.ValueListWithFixedValues : true
-        @Common                          : {ValueList #PSTYPEVisualFilter : {
+    @Common                          : {ValueList #PSTYPEVisualFilter : {
         $Type                        : 'Common.ValueListType',
         CollectionPath               : 'NAST',
         PresentationVariantQualifier : 'QtyByPstype',
@@ -141,6 +141,16 @@ annotate KpiService.NAST with {
     }
     KUNWE  @(ValueList.entity : 'KUNWEVH');
 
+    //     @Common                          : {ValueList #QUANTITYBYDAY : {
+    //     $Type                        : 'Common.ValueListType',
+    //     CollectionPath               : 'NAST',
+    //     PresentationVariantQualifier : 'QUANTITYBYDAY',
+    //     Parameters                   : [{
+    //         $Type             : 'Common.ValueListParameterInOut',
+    //         LocalDataProperty : 'PDLVDF',
+    //         ValueListProperty : 'PDLVDF'
+    //     }]
+    // }}
     @Common.IsCalendarDate
     PDLVDF
 };
@@ -150,14 +160,14 @@ annotate KpiService.NAST with @(
     Aggregation.ApplySupported.PropertyRestrictions : true,
     Aggregation,
     UI                                              : {
-        SelectionFields                  : [
+        SelectionFields                    : [
             DOCQTY,
             PSTYPE,
             PDLVDF,
             DLVZN,
             ERNAM
         ],
-        LineItem                         : [
+        LineItem                           : [
             {Value : DOCQTY},
             {Value : PSTYPE},
             {Value : PDLVDF},
@@ -166,11 +176,12 @@ annotate KpiService.NAST with @(
         ],
 
         //Needed to use in visual filter definition
-        PresentationVariant #DLVZN       : {Visualizations : ['@UI.Chart#DLVZN']},
-        PresentationVariant #QtyByPstype : {Visualizations : ['@UI.Chart#Unloadings']},
+        PresentationVariant #DLVZN         : {Visualizations : ['@UI.Chart#DLVZN']},
+        PresentationVariant #QtyByPstype   : {Visualizations : ['@UI.Chart#Unloadings']},
+        PresentationVariant #QUANTITYBYDAY : {Visualizations : ['@UI.Chart#QUANTITYBYDAY']},
 
 
-        Chart #DLVZN                     : {
+        Chart #DLVZN                       : {
             $Type               : 'UI.ChartDefinitionType',
             ChartType           : #Donut,
             Measures            : ['DOCQTY'],
@@ -187,7 +198,7 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Chart #QUANTITYBYDAY             : {
+        Chart #QUANTITYBYDAY               : {
             $Type               : 'UI.ChartDefinitionType',
             ChartType           : #Line,
             Measures            : ['DOCQTY'],
@@ -204,7 +215,7 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Chart #Unloadings                : {
+        Chart #Unloadings                  : {
             ChartType           : #Column,
             Dimensions          : [PSTYPE],
             DimensionAttributes : [{
@@ -218,12 +229,12 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Facets                           : [{
+        Facets                             : [{
             $Type  : 'UI.ReferenceFacet',
             Label  : '{i18n>Details}',
             Target : '@UI.FieldGroup#Details'
         }, ],
-        FieldGroup #Details              : {Data : [
+        FieldGroup #Details                : {Data : [
             {Value : DOCQTY},
             {Value : PSTYPE},
             {Value : PDLVDF},
