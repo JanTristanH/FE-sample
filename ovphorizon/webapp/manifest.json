@@ -157,7 +157,6 @@
         "model": "mainModel",
         "template": "sap.ovp.cards.charts.analytical",
         "settings": {
-          "title": "Count of material movement",
           "entitySet": "NAST",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#CountPerMaterial"
         }
