@@ -18,7 +18,7 @@ entity NAST {
         RDOCPOSNR   : String(40);
         RDOCTYPE    : String(40);
         KUNWE       : String(40);
-        MATNR       : String(40);
+        MATNR       : String(40) @title : '{i18n>MaterialName}';
         BWTAR       : String(40);
         OIHANTYP    : String(40);
         DOCQTY      : Decimal(7, 3);
@@ -55,5 +55,6 @@ entity NAST {
         FLAG_DEL    : String(1);
         GEOLON      : Decimal(15, 12);
         GEOLAT      : Decimal(15, 12);
+        DummyForCounting       : Integer default 1 @UI.Hidden @UI.HiddenFilter @title : '{i18n>Count}';
 
 }

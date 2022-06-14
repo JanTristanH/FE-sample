@@ -168,6 +168,11 @@ annotate KpiService.NAST with @(
             ERNAM
         ],
         LineItem                           : [
+                {
+      $Type          : 'UI.DataFieldForIntentBasedNavigation',
+      SemanticObject : 'Incident',
+      Action         : 'display'
+    },
             {Value : DOCQTY},
             {Value : PSTYPE},
             {Value : PDLVDF},
@@ -229,6 +234,20 @@ annotate KpiService.NAST with @(
             }]
         },
 
+        Chart #CountPerMaterial                  : {
+            ChartType           : #Column,
+            Dimensions          : [MATNR],
+            DimensionAttributes : [{
+                Dimension : MATNR,
+                Role      : #Category
+            }],
+            Measures            : [DummyForCounting],
+            MeasureAttributes   : [{
+                Measure : DummyForCounting,
+                Role    : #Axis1
+            }]
+        },
+
         Facets                             : [{
             $Type  : 'UI.ReferenceFacet',
             Label  : '{i18n>Details}',
@@ -249,8 +268,13 @@ annotate KpiService.NAST with @(
         Analytics.Measure   : true,
         Aggregation.default : #SUM
     );
+    DummyForCounting @(
+        Analytics.Measure   : true,
+        Aggregation.default : #SUM
+    );
 
     DLVZN  @(Analytics.Dimension : true);
     PSTYPE @(Analytics.Dimension : true);
-    PDLVDF @(Analytics.Dimension : true)
+    PDLVDF @(Analytics.Dimension : true);
+    MATNR @(Analytics.Dimension : true);
 };

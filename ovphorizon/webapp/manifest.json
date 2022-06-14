@@ -135,7 +135,7 @@
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#DLVZN"
         }
       },
-      "chart03": {
+      "chart02": {
         "model": "mainModel",
         "template": "sap.ovp.cards.charts.analytical",
         "settings": {
@@ -144,13 +144,22 @@
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#Unloadings"
         }
       },
-      "chart02": {
+      "chart03": {
         "model": "mainModel",
         "template": "sap.ovp.cards.charts.analytical",
         "settings": {
           "title": "Quantity Chart Date",
           "entitySet": "NAST",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#QUANTITYBYDAY"
+        }
+      },
+      "chart05": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Count of material movement",
+          "entitySet": "NAST",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#CountPerMaterial"
         }
       },
       "card_linklist_Carousel": {
