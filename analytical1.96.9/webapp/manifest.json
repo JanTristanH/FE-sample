@@ -1,7 +1,7 @@
 {
   "_version": "1.37.0",
   "sap.app": {
-    "id": "demo.analyticalhorizon",
+    "id": "demo.analytical1.96.9",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -13,7 +13,7 @@
     "sourceTemplate": {
       "id": "@sap-ux/fiori-elements-writer:alp",
       "version": "0.3.6",
-      "toolsId": "0e840581-c0a3-44f4-88a2-21cd68175d86"
+      "toolsId": "131e528d-312b-47a0-ac5a-22f039205119"
     },
     "dataSources": {
       "mainService": {
@@ -74,7 +74,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "demo.analyticalhorizon.i18n.i18n"
+          "bundleName": "demo.analytical1.96.9.i18n.i18n"
         }
       },
       "": {
@@ -120,7 +120,7 @@
           "settings": {
             "condensedTableLayout": true,
             "showGoButtonOnFilterBar": true,
-            "tableType": "AnalyticalTable",
+            "tableType": "ResponsiveTable",
             "autoHide": true,
             "smartVariantManagement": false,
             "tableSettings": {

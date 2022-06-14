@@ -1,15 +1,15 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Mon Jun 13 2022 14:09:11 GMT+0200 (Mitteleuropäische Sommerzeit)|
+|**Generation Date and Time**<br>Tue Jun 14 2022 08:17:24 GMT+0200 (Mitteleuropäische Sommerzeit)|
 |**App Generator**<br>@sap/generator-fiori-elements|
 |**App Generator Version**<br>1.6.1|
 |**Generation Platform**<br>Visual Studio Code|
 |**Floorplan Used**<br>Analytical List Page V2|
 |**Service Type**<br>OData Url|
 |**Service URL**<br>http://localhost:4004/v2/kpi
-|**Module Name**<br>analyticalhorizon|
-|**Application Title**<br>Analytical List Page Horizen|
+|**Module Name**<br>analytical1.96.9|
+|**Application Title**<br>Analytical Horizon 1.96.9|
 |**Namespace**<br>demo|
 |**UI5 Theme**<br>sap_horizon|
 |**UI5 Version**<br>1.96.9|
@@ -17,9 +17,9 @@
 |**Add Eslint configuration**<br>False|
 |**Main Entity**<br>NAST|
 
-## analyticalhorizon
+## analytical1.96.9
 
-Analytical List Page Horizen theme
+Analytical Horizon 1.96.9
 
 ### Starting the generated app
 

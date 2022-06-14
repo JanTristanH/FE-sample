@@ -2,7 +2,7 @@
 
 specVersion: "2.5"
 metadata:
-  name: demo.analyticalhorizon
+  name: demo.analytical1.96.9
 type: application
 server:
   customMiddleware:
@@ -27,5 +27,5 @@ server:
     - name: fiori-tools-preview
       afterMiddleware: fiori-tools-appreload
       configuration:
-        component: demo.analyticalhorizon
+        component: demo.analytical1.96.9
         ui5Theme: sap_horizon
