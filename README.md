@@ -6,6 +6,7 @@ Currently there is NO deployment configuration.
 Similarly, there is also no sophisticated approch to serving the frontend applications. These live in their own folders and are served locally when needed.
 
 You can start the app with the following commands:
+
 ```sh
 cds watch
 cd analytical1.96.9 && npm start 
@@ -54,7 +55,6 @@ File or Folder | Purpose
 - Open a new terminal and run `cds watch`
 - (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
 - Start adding content, for example, a [db/schema.cds](db/schema.cds).
-
 
 ## Learn More
 
