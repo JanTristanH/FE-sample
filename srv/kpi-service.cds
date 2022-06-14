@@ -141,7 +141,7 @@ annotate KpiService.NAST with {
     }
     KUNWE  @(ValueList.entity : 'KUNWEVH');
 
-        @Common                          : {ValueList #QUANTITYBYDAY : {
+    @Common                          : {ValueList #QUANTITYBYDAY : {
         $Type                        : 'Common.ValueListType',
         CollectionPath               : 'NAST',
         PresentationVariantQualifier : 'QUANTITYBYDAY',
@@ -160,19 +160,19 @@ annotate KpiService.NAST with @(
     Aggregation.ApplySupported.PropertyRestrictions : true,
     Aggregation,
     UI                                              : {
-        SelectionFields                    : [
+        SelectionFields                            : [
             DOCQTY,
             PSTYPE,
             PDLVDF,
             DLVZN,
             ERNAM
         ],
-        LineItem                           : [
-                {
-      $Type          : 'UI.DataFieldForIntentBasedNavigation',
-      SemanticObject : 'Incident',
-      Action         : 'display'
-    },
+        LineItem                                   : [
+            {
+                $Type          : 'UI.DataFieldForIntentBasedNavigation',
+                SemanticObject : 'Incident',
+                Action         : 'display'
+            },
             {Value : DOCQTY},
             {Value : PSTYPE},
             {Value : PDLVDF},
@@ -181,13 +181,13 @@ annotate KpiService.NAST with @(
         ],
 
         //Needed to use in visual filter definition
-        PresentationVariant #DLVZN         : {Visualizations : ['@UI.Chart#DLVZN']},
-        PresentationVariant #QtyByPstype   : {Visualizations : ['@UI.Chart#Unloadings']},
-        PresentationVariant #QUANTITYBYDAY : {Visualizations : ['@UI.Chart#QUANTITYBYDAY']},
+        PresentationVariant #DLVZN                 : {Visualizations : ['@UI.Chart#DLVZN']},
+        PresentationVariant #QtyByPstype           : {Visualizations : ['@UI.Chart#Unloadings']},
+        PresentationVariant #QUANTITYBYDAY         : {Visualizations : ['@UI.Chart#QUANTITYBYDAY']},
         PresentationVariant #MaterialMovementCount : {Visualizations : ['@UI.Chart']},
-                
 
-        Chart #DLVZN                       : {
+
+        Chart #DLVZN                               : {
             $Type               : 'UI.ChartDefinitionType',
             ChartType           : #Donut,
             Measures            : ['DOCQTY'],
@@ -204,7 +204,7 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Chart #QUANTITYBYDAY               : {
+        Chart #QUANTITYBYDAY                       : {
             $Type               : 'UI.ChartDefinitionType',
             ChartType           : #Line,
             Measures            : ['DOCQTY'],
@@ -221,7 +221,7 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Chart #Unloadings                  : {
+        Chart #Unloadings                          : {
             ChartType           : #Column,
             Dimensions          : [PSTYPE],
             DimensionAttributes : [{
@@ -236,7 +236,7 @@ annotate KpiService.NAST with @(
         },
 
         //unnamed chart is used as interactive chart
-        Chart                  : {
+        Chart                                      : {
             ChartType           : #Column,
             Dimensions          : [MATNR],
             DimensionAttributes : [{
@@ -250,12 +250,12 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Facets                             : [{
+        Facets                                     : [{
             $Type  : 'UI.ReferenceFacet',
             Label  : '{i18n>Details}',
             Target : '@UI.FieldGroup#Details'
         }, ],
-        FieldGroup #Details                : {Data : [
+        FieldGroup #Details                        : {Data : [
             {Value : DOCQTY},
             {Value : PSTYPE},
             {Value : PDLVDF},
@@ -266,7 +266,7 @@ annotate KpiService.NAST with @(
     }
 
 ) {
-    DOCQTY @(
+    DOCQTY           @(
         Analytics.Measure   : true,
         Aggregation.default : #SUM
     );
@@ -275,8 +275,8 @@ annotate KpiService.NAST with @(
         Aggregation.default : #SUM
     );
 
-    DLVZN  @(Analytics.Dimension : true);
-    PSTYPE @(Analytics.Dimension : true);
-    PDLVDF @(Analytics.Dimension : true);
-    MATNR @(Analytics.Dimension : true);
+    DLVZN            @(Analytics.Dimension : true);
+    PSTYPE           @(Analytics.Dimension : true);
+    PDLVDF           @(Analytics.Dimension : true);
+    MATNR            @(Analytics.Dimension : true);
 };
