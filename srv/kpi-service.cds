@@ -31,55 +31,65 @@ service KpiService {
             key ERNAM
         };
 
+    @readonly
+    @cds.odata.valuelist
+    entity KUNWEVH as
+        select from NAST distinct {
+            key KUNWE
+        };
+
 }
 
 annotate KpiService.Customers with @(
-    Communication.Contact #identify1 : {
-        title : KUNWE,
-        //org : mail,
-        // role : OrganizationRole,
-        // tel : [
-        //     {
-        //         type : #fax,
-        //         uri : FaxNumber
-        //     },
-        //     {
-        //         type : [ #work, #pref ],
-        //         uri : PhoneNumber
-        //     }
-        // ],
-        // email : [{
-        //     type    : #work,
-        //     address : mail
-        // }]
-    },
+    Communication.Contact #identify1 : {title : KUNWE,
+                                                       //org : mail,
+                                                       // role : OrganizationRole,
+                                                       // tel : [
+                                                       //     {
+                                                       //         type : #fax,
+                                                       //         uri : FaxNumber
+                                                       //     },
+                                                       //     {
+                                                       //         type : [ #work, #pref ],
+                                                       //         uri : PhoneNumber
+                                                       //     }
+                                                       // ],
+                                                       // email : [{
+                                                       //     type    : #work,
+                                                       //     address : mail
+                                                       // }]
+                                                },
 
     UI                               : {
-        LineItem                   : [
-            {Value : KUNWE, Url: 'sap.com'}],
+        LineItem            : [{
+            Value : KUNWE,
+            Url   : 'sap.com'
+        }],
 
-    HeaderInfo #header1 : {
-        $Type          : 'UI.HeaderInfoType',
-        TypeName       : 'Product',
-        TypeNamePlural : 'Products',
-        Title          : {
-            $Type : 'UI.DataField',
-            Label : 'Customer Name',
-            Value : KUNWE
-        },
-        Description    : {
-            $Type : 'UI.DataField',
-            Label : 'Product Description',
-            Value : KUNWE
-        },
-        TypeImageUrl   : 'sap-icon://customer',
-        
-    }}
+        HeaderInfo #header1 : {
+            $Type          : 'UI.HeaderInfoType',
+            TypeName       : 'Product',
+            TypeNamePlural : 'Products',
+            Title          : {
+                $Type : 'UI.DataField',
+                Label : 'Customer Name',
+                Value : KUNWE
+            },
+            Description    : {
+                $Type : 'UI.DataField',
+                Label : 'Product Description',
+                Value : KUNWE
+            },
+            TypeImageUrl   : 'sap-icon://customer',
+
+        }
+    }
 
 );
 
 
 annotate KpiService.NAST with {
+    //field dependant annotations -> charts in top bar
     @Common                          : {ValueList #DlvznVisualFilter : {
         $Type                        : 'Common.ValueListType',
         CollectionPath               : 'NAST',
@@ -92,18 +102,17 @@ annotate KpiService.NAST with {
     }}
     DLVZN  @(ValueList.entity : 'DlvznVH');
 
-
     @Common.ValueListWithFixedValues : true
-    @Common.ValueList                : {
-        $Type          : 'Common.ValueListType',
-        Label          : 'PSTYPE',
-        CollectionPath : 'NAST',
-        Parameters     : [{
+        @Common                          : {ValueList #PSTYPEVisualFilter : {
+        $Type                        : 'Common.ValueListType',
+        CollectionPath               : 'NAST',
+        PresentationVariantQualifier : 'QtyByPstype',
+        Parameters                   : [{
             $Type             : 'Common.ValueListParameterInOut',
             LocalDataProperty : 'PSTYPE',
             ValueListProperty : 'PSTYPE'
         }]
-    }
+    }}
     PSTYPE @(ValueList.entity : 'PstypeVH');
 
     @Common.ValueListWithFixedValues : true
@@ -119,6 +128,19 @@ annotate KpiService.NAST with {
     }
     ERNAM  @(ValueList.entity : 'CreatedByVH');
 
+    //definde value help
+    @Common.ValueList                : {
+        $Type          : 'Common.ValueListType',
+        Label          : 'KUNWE',
+        CollectionPath : 'NAST',
+        Parameters     : [{
+            $Type             : 'Common.ValueListParameterInOut',
+            LocalDataProperty : 'KUNWE',
+            ValueListProperty : 'KUNWE'
+        }]
+    }
+    KUNWE  @(ValueList.entity : 'KUNWEVH');
+
     @Common.IsCalendarDate
     PDLVDF
 };
@@ -128,14 +150,14 @@ annotate KpiService.NAST with @(
     Aggregation.ApplySupported.PropertyRestrictions : true,
     Aggregation,
     UI                                              : {
-        SelectionFields            : [
+        SelectionFields                  : [
             DOCQTY,
             PSTYPE,
             PDLVDF,
             DLVZN,
             ERNAM
         ],
-        LineItem                   : [
+        LineItem                         : [
             {Value : DOCQTY},
             {Value : PSTYPE},
             {Value : PDLVDF},
@@ -143,10 +165,12 @@ annotate KpiService.NAST with @(
             {Value : ERNAM},
         ],
 
-        PresentationVariant #DLVZN : {Visualizations : ['@UI.Chart#DLVZN'] },
-        
+        //Needed to use in visual filter definition
+        PresentationVariant #DLVZN       : {Visualizations : ['@UI.Chart#DLVZN']},
+        PresentationVariant #QtyByPstype : {Visualizations : ['@UI.Chart#Unloadings']},
 
-        Chart #DLVZN               : {
+
+        Chart #DLVZN                     : {
             $Type               : 'UI.ChartDefinitionType',
             ChartType           : #Donut,
             Measures            : ['DOCQTY'],
@@ -163,7 +187,7 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Chart #QUANTITYBYDAY       : {
+        Chart #QUANTITYBYDAY             : {
             $Type               : 'UI.ChartDefinitionType',
             ChartType           : #Line,
             Measures            : ['DOCQTY'],
@@ -180,26 +204,26 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Chart #Unloadings               : {
-        ChartType           : #Column,
-        Dimensions          : [PSTYPE],
-        DimensionAttributes : [{
-        Dimension : PSTYPE,
-        Role      : #Category
-        }],
-        Measures            : [DOCQTY],
-        MeasureAttributes   : [{
-        Measure : DOCQTY,
-        Role    : #Axis1
-        }]
-    },
+        Chart #Unloadings                : {
+            ChartType           : #Column,
+            Dimensions          : [PSTYPE],
+            DimensionAttributes : [{
+                Dimension : PSTYPE,
+                Role      : #Category
+            }],
+            Measures            : [DOCQTY],
+            MeasureAttributes   : [{
+                Measure : DOCQTY,
+                Role    : #Axis1
+            }]
+        },
 
-        Facets                     : [{
+        Facets                           : [{
             $Type  : 'UI.ReferenceFacet',
             Label  : '{i18n>Details}',
             Target : '@UI.FieldGroup#Details'
         }, ],
-        FieldGroup #Details        : {Data : [
+        FieldGroup #Details              : {Data : [
             {Value : DOCQTY},
             {Value : PSTYPE},
             {Value : PDLVDF},
@@ -214,7 +238,7 @@ annotate KpiService.NAST with @(
         Analytics.Measure   : true,
         Aggregation.default : #SUM
     );
-    
+
     DLVZN  @(Analytics.Dimension : true);
     PSTYPE @(Analytics.Dimension : true);
     PDLVDF @(Analytics.Dimension : true)
