@@ -1,8 +1,22 @@
 # FE Analylitcal Page
 
+This repo is a place for testing the interaction of CAP and FE.
+
+Currently there is NO deployment configuration.
+Similarly, there is also no sophisticated approch to serving the frontend applications. These live in their own folders and are served locally when needed.
+
+You can start the app with the following commands:
+```sh
+cds watch
+cd analytical1.96.9 && npm start 
+cd ovphorizon && npm start
+```
+
 ## How to get more Nast data
 
-Run a Report with similar code as shown below on your SAP system from Hana Studio:
+There is a csv file with sample data already provided, which gets loaded on database setup.
+
+If you want to extend that data from an on premise SAP system, run a Report with similar code as shown below on your SAP system from Hana Studio:
 
 ```ABAP
 REPORT zthe_steal_nast.
@@ -35,10 +49,9 @@ File or Folder | Purpose
 `package.json` | project metadata and configuration
 `readme.md` | this getting started guide
 
-
 ## Next Steps
 
-- Open a new terminal and run `cds watch` 
+- Open a new terminal and run `cds watch`
 - (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
 - Start adding content, for example, a [db/schema.cds](db/schema.cds).
 
