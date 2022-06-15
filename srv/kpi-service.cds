@@ -174,6 +174,23 @@ annotate KpiService.NAST with @(
     Aggregation.ApplySupported.PropertyRestrictions : true,
     Aggregation,
     UI                                              : {
+
+        // Define ctriticality and semantic colors for Visual filter QTY
+        DataPoint  : {
+            $Type : 'UI.DataPointType',
+            Value : DOCQTY,
+            CriticalityCalculation : {
+                $Type : 'UI.CriticalityCalculationType',
+                ImprovementDirection : #Maximize,
+                AcceptanceRangeLowValue : 500,
+                AcceptanceRangeHighValue : 1000,
+                ToleranceRangeLowValue: 400,
+                ToleranceRangeHighValue: 999,
+                DeviationRangeLowValue: 0,
+                DeviationRangeHighValue: 9999
+            },
+        },
+
         SelectionFields                            : [
             DOCQTY,
             PSTYPE,
