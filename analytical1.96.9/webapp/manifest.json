@@ -23,7 +23,6 @@
           "annotations": [
             "annotation"
           ],
-          "useBatch": false,
           "localUri": "localService/metadata.xml",
           "odataVersion": "2.0"
         }
