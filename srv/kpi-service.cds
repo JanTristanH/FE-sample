@@ -42,29 +42,30 @@ service KpiService {
 
 annotate KpiService.Customers with @(
     Communication.Contact #identify1 : {title : KUNWE,
-                                                       //org : mail,
-                                                       // role : OrganizationRole,
-                                                       // tel : [
-                                                       //     {
-                                                       //         type : #fax,
-                                                       //         uri : FaxNumber
-                                                       //     },
-                                                       //     {
-                                                       //         type : [ #work, #pref ],
-                                                       //         uri : PhoneNumber
-                                                       //     }
-                                                       // ],
-                                                       // email : [{
-                                                       //     type    : #work,
-                                                       //     address : mail
-                                                       // }]
+                                        //org : mail,
+                                        // role : OrganizationRole,
+                                        // tel : [
+                                        //     {
+                                        //         type : #fax,
+                                        //         uri : FaxNumber
+                                        //     },
+                                        //     {
+                                        //         type : [ #work, #pref ],
+                                        //         uri : PhoneNumber
+                                        //     }
+                                        // ],
+                                        // email : [{
+                                        //     type    : #work,
+                                        //     address : mail
+                                        // }]
                                                 },
 
     UI                               : {
         LineItem            : [{
-            Value : KUNWE,
-            Url   : 'sap.com'
-        }],
+                $Type          : 'UI.DataFieldWithUrl',
+                Url : 'forward.html',
+                Value: KUNWE,
+            },],
 
         HeaderInfo #header1 : {
             $Type          : 'UI.HeaderInfoType',
@@ -89,18 +90,22 @@ annotate KpiService.Customers with @(
 
 
 annotate KpiService.NAST with {
+    @Common.SemanticObject           : 'Movement'
+    DOCNR;
+
     //field dependant annotations -> charts in top bar
-    @Common                          : {ValueList #DlvznVisualFilter : {
-        $Type                        : 'Common.ValueListType',
-        CollectionPath               : 'NAST',
-        PresentationVariantQualifier : 'DLVZN',
-        Parameters                   : [{
-            $Type             : 'Common.ValueListParameterInOut',
-            LocalDataProperty : 'DLVZN',
-            ValueListProperty : 'DLVZN'
-        }]
-    },
-    ValueList                     : {
+    @Common                          : {
+        ValueList #DlvznVisualFilter : {
+            $Type                        : 'Common.ValueListType',
+            CollectionPath               : 'NAST',
+            PresentationVariantQualifier : 'DLVZN',
+            Parameters                   : [{
+                $Type             : 'Common.ValueListParameterInOut',
+                LocalDataProperty : 'DLVZN',
+                ValueListProperty : 'DLVZN'
+            }]
+        },
+        ValueList                    : {
             $Type          : 'Common.ValueListType',
             Label          : 'DLVZN',
             CollectionPath : 'NAST',
@@ -109,7 +114,8 @@ annotate KpiService.NAST with {
                 LocalDataProperty : 'DLVZN',
                 ValueListProperty : 'DLVZN'
             }]
-        }}
+        }
+    }
     DLVZN  @(ValueList.entity : 'DlvznVH');
 
     @Common.ValueListWithFixedValues : true
@@ -188,19 +194,10 @@ annotate KpiService.NAST with @(
 
 
         // Define ctriticality and semantic colors for Visual filter QTY
-        DataPoint                          : {
+        DataPoint          #DOCNR                : {
             $Type                  : 'UI.DataPointType',
-            Value                  : DOCQTY,
-            CriticalityCalculation : {
-                $Type                    : 'UI.CriticalityCalculationType',
-                ImprovementDirection     : #Maximize,
-                AcceptanceRangeLowValue  : 500,
-                AcceptanceRangeHighValue : 1000,
-                ToleranceRangeLowValue   : 400,
-                ToleranceRangeHighValue  : 999,
-                DeviationRangeLowValue   : 0,
-                DeviationRangeHighValue  : 9999
-            },
+            Title : 'DOCNR',
+            Value                  : DOCNR,
         },
 
         SelectionFields                    : [
@@ -209,18 +206,6 @@ annotate KpiService.NAST with @(
             PDLVDF,
             DLVZN,
             ERNAM
-        ],
-        LineItem                           : [
-            {
-                $Type          : 'UI.DataFieldForIntentBasedNavigation',
-                SemanticObject : 'Incident',
-                Action         : 'display'
-            },
-            {Value : DOCQTY},
-            {Value : PSTYPE},
-            {Value : PDLVDF},
-            {Value : DLVZN},
-            {Value : ERNAM},
         ],
 
         //Needed to use in visual filter definition
@@ -293,12 +278,32 @@ annotate KpiService.NAST with @(
             }]
         },
 
+        LineItem                           : [
+            {Value : DOCNR},
+            {
+                $Type          : 'UI.DataFieldWithUrl',
+                Url : 'forward.html',
+                Value: DOCNR,
+            },
+            {Value : DOCQTY},
+            {Value : PSTYPE},
+            {Value : PDLVDF},
+            {Value : DLVZN},
+            {Value : ERNAM},
+        ],
+
         Facets                             : [{
             $Type  : 'UI.ReferenceFacet',
             Label  : '{i18n>Details}',
-            Target : '@UI.FieldGroup#Details'
+            Target : '@UI.FieldGroup#Details',
         }, ],
         FieldGroup #Details                : {Data : [
+            {Value : DOCNR},
+            {
+                $Type          : 'UI.DataFieldForIntentBasedNavigation',
+                SemanticObject : 'displayDocNr',
+                Action         : 'display',
+            },
             {Value : DOCQTY},
             {Value : PSTYPE},
             {Value : PDLVDF},
