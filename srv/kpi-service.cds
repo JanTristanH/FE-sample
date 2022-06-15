@@ -99,7 +99,17 @@ annotate KpiService.NAST with {
             LocalDataProperty : 'DLVZN',
             ValueListProperty : 'DLVZN'
         }]
-    }}
+    },
+    ValueList                     : {
+            $Type          : 'Common.ValueListType',
+            Label          : 'DLVZN',
+            CollectionPath : 'NAST',
+            Parameters     : [{
+                $Type             : 'Common.ValueListParameterInOut',
+                LocalDataProperty : 'DLVZN',
+                ValueListProperty : 'DLVZN'
+            }]
+        }}
     DLVZN  @(ValueList.entity : 'DlvznVH');
 
     @Common.ValueListWithFixedValues : true
