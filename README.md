@@ -30,6 +30,7 @@ BREAK-POINT.
 Then copy the data from the internal table into a file called `nast.csv`. This can be done by right clicking on the table data in debugger and selecting `Export to File...`. Be sure to update the file extension to `.csv`.
 
 Then open the file in Excel and remove the first and last column.
+Also update PDLVDF to match the format `2019-12-11`
 Save the file into `./db/data` as `db.NAST.csv`.
 
 The updated content of the file will be served by CAP.

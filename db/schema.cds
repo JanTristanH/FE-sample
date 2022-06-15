@@ -34,7 +34,7 @@ entity NAST {
         TDLVZN           : String(40);
         DLVZN            : String(40)        @title :                   '{i18n>DeliveryZone}';
         IDMDOCTYPE       : String(40);
-        PDLVDF           : String(40)        @title :                   '{i18n>PlannedDateFr}'; //Date
+        PDLVDF           : Date       @title :                   '{i18n>PlannedDateFr}'; //Date
         PDLVDT           : String(40); //Date;
         PDLVTF           : Time;
         PDLVTT           : Time;

@@ -89,7 +89,7 @@ annotate KpiService.Customers with @(
 );
 
 
-annotate KpiService.NAST with {
+annotate KpiService.NAST with {    
     @Common.SemanticObject           : 'Movement'
     DOCNR;
 
@@ -182,7 +182,8 @@ annotate KpiService.NAST with {
             ValueListProperty : 'PDLVDF'
         }]
     }}
-    @Common.IsCalendarDate
+    //--> if enabled semanci date range filter is available, otherwise the chart will work
+    //@sap.filter.restriction: 'interval' 
     PDLVDF;
 };
 
