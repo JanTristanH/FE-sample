@@ -175,6 +175,7 @@ annotate KpiService.NAST with @(
     Aggregation.ApplySupported.PropertyRestrictions : true,
     Aggregation,
     UI                                              : {
+        
 
         // Define ctriticality and semantic colors for Visual filter QTY
         DataPoint                                  : {
@@ -215,23 +216,9 @@ annotate KpiService.NAST with @(
         //Needed to use in visual filter definition
         PresentationVariant #DLVZN                      : {Visualizations : ['@UI.Chart#DLVZN']},
         PresentationVariant #QtyByPstype                : {Visualizations : ['@UI.Chart#Unloadings']},
-        PresentationVariant #QUANTITYBYDAY              : {Visualizations : ['@UI.Chart']},
-        //PresentationVariant : {Visualizations : ['@UI.Chart']},
-
-        PresentationVariant  : {
-            Text           : 'Default',
-            $Type          : 'UI.PresentationVariantType',
-            Visualizations : ['@UI.Chart#MaterialMovement', ],
-        },
-
-        SelectionVariant       : {$Type : 'UI.SelectionVariantType',
-
-        },
-        SelectionPresentationVariant    : {
-            Text                : 'Product Financial Analysis',
-            SelectionVariant    : ![@UI.SelectionVariant],
-            PresentationVariant : ![@UI.PresentationVariant]
-        },
+        PresentationVariant #QUANTITYBYDAY              : {Visualizations : ['@UI.Chart#QUANTITYBYDAY']},
+        //unnamed presentation variant for interactive chart
+        PresentationVariant : {Visualizations : ['@UI.Chart#MaterialMovement']},
 
         Chart #DLVZN                                    : {
             $Type               : 'UI.ChartDefinitionType',
@@ -250,7 +237,7 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Chart                             : {
+        Chart                #QUANTITYBYDAY             : {
             $Type               : 'UI.ChartDefinitionType',
             ChartType           : #Line,
             Measures            : ['DOCQTY'],
@@ -281,7 +268,7 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        //unnamed chart is used as interactive chart
+        //chart is used as interactive chart (not woking yet)
         Chart                         #MaterialMovement                  : {
             ChartType           : #Column,
             Dimensions          : [MATNR],
@@ -316,6 +303,7 @@ annotate KpiService.NAST with @(
         Analytics.Measure   : true,
         Aggregation.default : #SUM
     );
+
     DummyForCounting @(
         Analytics.Measure   : true,
         Aggregation.default : #SUM

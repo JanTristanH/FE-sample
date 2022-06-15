@@ -55,6 +55,6 @@ entity NAST {
         FLAG_DEL    : String(1);
         GEOLON      : Decimal(15, 12);
         GEOLAT      : Decimal(15, 12);
-        DummyForCounting       : Integer default 1 @UI.Hidden @UI.HiddenFilter @title : '{i18n>Count}';
+        DummyForCounting       : Integer default 1 @UI.HiddenFilter @title : '{i18n>Count}';
 
 }

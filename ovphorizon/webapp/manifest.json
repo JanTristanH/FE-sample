@@ -158,7 +158,7 @@
         "template": "sap.ovp.cards.charts.analytical",
         "settings": {
           "entitySet": "NAST",
-          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart"
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#MaterialMovement"
         }
       },
       "card_linklist_Carousel": {
