@@ -102,8 +102,10 @@ annotate KpiService.NAST with {
     }}
     DLVZN  @(ValueList.entity : 'DlvznVH');
 
+    @Common.ValueListWithFixedValues : true
+    @Common                          : {
     //visual Filter
-    @Common                          : {ValueList #PSTYPEVisualFilter : {
+        ValueList #PSTYPEVisualFilter : {
         $Type                        : 'Common.ValueListType',
         CollectionPath               : 'NAST',
         PresentationVariantQualifier : 'QtyByPstype',
@@ -112,10 +114,9 @@ annotate KpiService.NAST with {
             LocalDataProperty : 'PSTYPE',
             ValueListProperty : 'PSTYPE'
         }]
-    }}
+    }
     //Drop down list without qualifier
-    @Common.ValueListWithFixedValues : true
-    // @Common.ValueList                : {
+    // ,ValueList                : {
     //     $Type          : 'Common.ValueListType',
     //     Label          : 'PSTYPE',
     //     CollectionPath : 'NAST',
@@ -125,6 +126,7 @@ annotate KpiService.NAST with {
     //         ValueListProperty : 'PSTYPE'
     //     }]
     // }
+    }
     PSTYPE @(ValueList.entity : 'PstypeVH');
 
     @Common.ValueListWithFixedValues : true
