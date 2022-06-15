@@ -57,13 +57,27 @@
     "dependencies": {
       "minUI5Version": "1.96.9",
       "libs": {
-        "sap.m": {},
-        "sap.ui.core": {},
-        "sap.ushell": {},
-        "sap.f": {},
-        "sap.ui.comp": {},
-        "sap.ui.generic.app": {},
-        "sap.suite.ui.generic.template": {}
+        "sap.m": {
+          "lazy": true
+        },
+        "sap.ui.core": {
+          "lazy": true
+        },
+        "sap.ushell": {
+          "lazy": true
+        },
+        "sap.f": {
+          "lazy": true
+        },
+        "sap.ui.comp": {
+          "lazy": true
+        },
+        "sap.ui.generic.app": {
+          "lazy": true
+        },
+        "sap.suite.ui.generic.template": {
+          "lazy": true
+        }
       }
     },
     "contentDensities": {
