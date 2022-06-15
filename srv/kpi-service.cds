@@ -199,7 +199,7 @@ annotate KpiService.NAST with @(
             DLVZN,
             ERNAM
         ],
-        LineItem                                   : [
+        LineItem                                        : [
             {
                 $Type          : 'UI.DataFieldForIntentBasedNavigation',
                 SemanticObject : 'Incident',
@@ -213,13 +213,27 @@ annotate KpiService.NAST with @(
         ],
 
         //Needed to use in visual filter definition
-        PresentationVariant #DLVZN                 : {Visualizations : ['@UI.Chart#DLVZN']},
-        PresentationVariant #QtyByPstype           : {Visualizations : ['@UI.Chart#Unloadings']},
-        PresentationVariant #QUANTITYBYDAY         : {Visualizations : ['@UI.Chart#QUANTITYBYDAY']},
-        PresentationVariant #MaterialMovementCount : {Visualizations : ['@UI.Chart']},
+        PresentationVariant #DLVZN                      : {Visualizations : ['@UI.Chart#DLVZN']},
+        PresentationVariant #QtyByPstype                : {Visualizations : ['@UI.Chart#Unloadings']},
+        PresentationVariant #QUANTITYBYDAY              : {Visualizations : ['@UI.Chart']},
+        //PresentationVariant : {Visualizations : ['@UI.Chart']},
 
+        PresentationVariant  : {
+            Text           : 'Default',
+            $Type          : 'UI.PresentationVariantType',
+            Visualizations : ['@UI.Chart#MaterialMovement', ],
+        },
 
-        Chart #DLVZN                               : {
+        SelectionVariant       : {$Type : 'UI.SelectionVariantType',
+
+        },
+        SelectionPresentationVariant    : {
+            Text                : 'Product Financial Analysis',
+            SelectionVariant    : ![@UI.SelectionVariant],
+            PresentationVariant : ![@UI.PresentationVariant]
+        },
+
+        Chart #DLVZN                                    : {
             $Type               : 'UI.ChartDefinitionType',
             ChartType           : #Donut,
             Measures            : ['DOCQTY'],
@@ -236,7 +250,7 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Chart #QUANTITYBYDAY                       : {
+        Chart                             : {
             $Type               : 'UI.ChartDefinitionType',
             ChartType           : #Line,
             Measures            : ['DOCQTY'],
@@ -253,8 +267,8 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Chart #Unloadings                          : {
-            ChartType           : #Column,
+        Chart #Unloadings                               : {
+            ChartType           : #Bar,
             Dimensions          : [PSTYPE],
             DimensionAttributes : [{
                 Dimension : PSTYPE,
@@ -268,26 +282,26 @@ annotate KpiService.NAST with @(
         },
 
         //unnamed chart is used as interactive chart
-        Chart                                      : {
+        Chart                         #MaterialMovement                  : {
             ChartType           : #Column,
             Dimensions          : [MATNR],
+            Measures            : [DummyForCounting],
             DimensionAttributes : [{
                 Dimension : MATNR,
                 Role      : #Category
             }],
-            Measures            : [DummyForCounting],
             MeasureAttributes   : [{
                 Measure : DummyForCounting,
                 Role    : #Axis1
             }]
         },
 
-        Facets                                     : [{
+        Facets                                          : [{
             $Type  : 'UI.ReferenceFacet',
             Label  : '{i18n>Details}',
             Target : '@UI.FieldGroup#Details'
         }, ],
-        FieldGroup #Details                        : {Data : [
+        FieldGroup #Details                             : {Data : [
             {Value : DOCQTY},
             {Value : PSTYPE},
             {Value : PDLVDF},
