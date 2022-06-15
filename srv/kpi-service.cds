@@ -175,10 +175,10 @@ annotate KpiService.NAST with @(
     Aggregation.ApplySupported.PropertyRestrictions : true,
     Aggregation,
     UI                                              : {
-        
+
 
         // Define ctriticality and semantic colors for Visual filter QTY
-        DataPoint                                  : {
+        DataPoint                          : {
             $Type                  : 'UI.DataPointType',
             Value                  : DOCQTY,
             CriticalityCalculation : {
@@ -193,14 +193,14 @@ annotate KpiService.NAST with @(
             },
         },
 
-        SelectionFields                            : [
+        SelectionFields                    : [
             DOCQTY,
             PSTYPE,
             PDLVDF,
             DLVZN,
             ERNAM
         ],
-        LineItem                                        : [
+        LineItem                           : [
             {
                 $Type          : 'UI.DataFieldForIntentBasedNavigation',
                 SemanticObject : 'Incident',
@@ -214,13 +214,13 @@ annotate KpiService.NAST with @(
         ],
 
         //Needed to use in visual filter definition
-        PresentationVariant #DLVZN                      : {Visualizations : ['@UI.Chart#DLVZN']},
-        PresentationVariant #QtyByPstype                : {Visualizations : ['@UI.Chart#Unloadings']},
-        PresentationVariant #QUANTITYBYDAY              : {Visualizations : ['@UI.Chart#QUANTITYBYDAY']},
+        PresentationVariant #DLVZN         : {Visualizations : ['@UI.Chart#DLVZN']},
+        PresentationVariant #QtyByPstype   : {Visualizations : ['@UI.Chart#Unloadings']},
+        PresentationVariant #QUANTITYBYDAY : {Visualizations : ['@UI.Chart#QUANTITYBYDAY']},
         //unnamed presentation variant for interactive chart
-        PresentationVariant : {Visualizations : ['@UI.Chart#MaterialMovement']},
+        PresentationVariant                : {Visualizations : ['@UI.Chart#MaterialMovement']},
 
-        Chart #DLVZN                                    : {
+        Chart #DLVZN                       : {
             $Type               : 'UI.ChartDefinitionType',
             ChartType           : #Donut,
             Measures            : ['DOCQTY'],
@@ -237,7 +237,7 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Chart                #QUANTITYBYDAY             : {
+        Chart #QUANTITYBYDAY               : {
             $Type               : 'UI.ChartDefinitionType',
             ChartType           : #Line,
             Measures            : ['DOCQTY'],
@@ -254,7 +254,7 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Chart #Unloadings                               : {
+        Chart #Unloadings                  : {
             ChartType           : #Bar,
             Dimensions          : [PSTYPE],
             DimensionAttributes : [{
@@ -269,7 +269,7 @@ annotate KpiService.NAST with @(
         },
 
         //chart is used as interactive chart (not woking yet)
-        Chart                         #MaterialMovement                  : {
+        Chart #MaterialMovement            : {
             ChartType           : #Column,
             Dimensions          : [MATNR],
             Measures            : [DummyForCounting],
@@ -283,12 +283,12 @@ annotate KpiService.NAST with @(
             }]
         },
 
-        Facets                                          : [{
+        Facets                             : [{
             $Type  : 'UI.ReferenceFacet',
             Label  : '{i18n>Details}',
             Target : '@UI.FieldGroup#Details'
         }, ],
-        FieldGroup #Details                             : {Data : [
+        FieldGroup #Details                : {Data : [
             {Value : DOCQTY},
             {Value : PSTYPE},
             {Value : PDLVDF},
