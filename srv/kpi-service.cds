@@ -104,28 +104,29 @@ annotate KpiService.NAST with {
 
     @Common.ValueListWithFixedValues : true
     @Common                          : {
-    //visual Filter
+        //visual Filter
         ValueList #PSTYPEVisualFilter : {
-        $Type                        : 'Common.ValueListType',
-        CollectionPath               : 'NAST',
-        PresentationVariantQualifier : 'QtyByPstype',
-        Parameters                   : [{
-            $Type             : 'Common.ValueListParameterInOut',
-            LocalDataProperty : 'PSTYPE',
-            ValueListProperty : 'PSTYPE'
-        }]
-    }
-    //Drop down list without qualifier
-    // ,ValueList                : {
-    //     $Type          : 'Common.ValueListType',
-    //     Label          : 'PSTYPE',
-    //     CollectionPath : 'NAST',
-    //     Parameters     : [{
-    //         $Type             : 'Common.ValueListParameterInOut',
-    //         LocalDataProperty : 'PSTYPE',
-    //         ValueListProperty : 'PSTYPE'
-    //     }]
-    // }
+            $Type                        : 'Common.ValueListType',
+            CollectionPath               : 'NAST',
+            PresentationVariantQualifier : 'QtyByPstype',
+            Parameters                   : [{
+                $Type             : 'Common.ValueListParameterInOut',
+                LocalDataProperty : 'PSTYPE',
+                ValueListProperty : 'PSTYPE'
+            }]
+        }
+        //Drop down list without qualifier
+        ,
+        ValueList                     : {
+            $Type          : 'Common.ValueListType',
+            Label          : 'PSTYPE',
+            CollectionPath : 'NAST',
+            Parameters     : [{
+                $Type             : 'Common.ValueListParameterInOut',
+                LocalDataProperty : 'PSTYPE',
+                ValueListProperty : 'PSTYPE'
+            }]
+        }
     }
     PSTYPE @(ValueList.entity : 'PstypeVH');
 
@@ -176,18 +177,18 @@ annotate KpiService.NAST with @(
     UI                                              : {
 
         // Define ctriticality and semantic colors for Visual filter QTY
-        DataPoint  : {
-            $Type : 'UI.DataPointType',
-            Value : DOCQTY,
+        DataPoint                                  : {
+            $Type                  : 'UI.DataPointType',
+            Value                  : DOCQTY,
             CriticalityCalculation : {
-                $Type : 'UI.CriticalityCalculationType',
-                ImprovementDirection : #Maximize,
-                AcceptanceRangeLowValue : 500,
+                $Type                    : 'UI.CriticalityCalculationType',
+                ImprovementDirection     : #Maximize,
+                AcceptanceRangeLowValue  : 500,
                 AcceptanceRangeHighValue : 1000,
-                ToleranceRangeLowValue: 400,
-                ToleranceRangeHighValue: 999,
-                DeviationRangeLowValue: 0,
-                DeviationRangeHighValue: 9999
+                ToleranceRangeLowValue   : 400,
+                ToleranceRangeHighValue  : 999,
+                DeviationRangeLowValue   : 0,
+                DeviationRangeHighValue  : 9999
             },
         },
 
