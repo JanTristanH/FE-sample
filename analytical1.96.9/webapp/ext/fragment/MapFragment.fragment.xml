@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:html="http://www.w3.org/1999/xhtml" controllerName="demo.analytical1.96.9.ext.controller.MapView"
+	xmlns:vbm="sap.ui.vbm" displayBlock="true"	>
+	<VBox>
+
+		<!-- HBox class="">
+        <Text text="The bookings were confirmed on" class="sapUiTinyMarginEnd"/>
+        <macros:Field readOnly="true" metaPath="CreatedAt" id="custom-flightdate"/>
+        <Text text="by" class="sapUiTinyMarginBeginEnd"/>
+        <macros:Field readOnly="true" metaPath="AgencyID" id="custom-airline"/>  
+    </HBox  -->
+
+		<vbm:GeoMap width="100%"
+			xmlns:l="sap.ui.layout" height="600px" initialPosition="{GEOLON};{GEOLAT};0" initialZoom="12" class="sapUiMediumMarginTop" mapConfiguration="{mapConfig>/}">
+			<!-- map config from https://embed.plnkr.co/plunk/k5ql5sUBbmmfJ0yU -->
+			<vbm:vos>
+				<vbm:Routes>
+				</vbm:Routes>
+				<vbm:Spots >
+					<vbm:Spot position="{GEOLON};{GEOLAT}" tooltip="{DOCNR}" labelType="Default" labelText="{DOCNR} -  {KUNWE}" labelPos="5" />
+				</vbm:Spots>
+			</vbm:vos>
+		</vbm:GeoMap>
+	</VBox>
+
+</core:FragmentDefinition>

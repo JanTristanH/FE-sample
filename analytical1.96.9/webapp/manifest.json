@@ -33,6 +33,10 @@
                 "settings": {
                     "localUri": "annotations/annotation.xml"
                 }
+            },
+            "mapConfig": {
+                "type": "JSON",
+                "uri": "./map/config.json"
             }
         }
     },
@@ -106,6 +110,9 @@
             "@i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "uri": "i18n/i18n.properties"
+            },
+            "mapConfig": {
+                "dataSource": "mapConfig"
             }
         },
         "resources": {
@@ -115,6 +122,23 @@
             "config": {},
             "routes": [],
             "targets": {}
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.viewExtensions": {
+                    "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+                        "AfterFacet|NAST|com.sap.vocabularies.UI.v1.FieldGroup::Details": {
+                            "className": "sap.ui.core.Fragment",
+                            "viewName": "demo.analytical1.96.9.ext.view.MapView",
+                            "type": "XML",
+                            "sap.ui.generic.app": {
+                                "title": "MapFragment"
+                            },
+                            "fragmentName": "demo.analytical1.96.9.ext.fragment.MapFragment"
+                        }
+                    }
+                }
+            }
         }
     },
     "sap.ui.generic.app": {
@@ -144,8 +168,8 @@
                         "filterSettings": {
                             "dateSettings": {
                                 "useDateRange": true
+                            }
                         }
-                    }
                     }
                 },
                 "pages": {

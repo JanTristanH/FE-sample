@@ -291,6 +291,10 @@ annotate KpiService.NAST with @(
             {Value : PDLVDF},
             {Value : DLVZN},
             {Value : ERNAM},
+            {Value : GEOLAT},
+            {Value : GEOLON},
+            {Value : KUNWE},
+
         ],
 
         Facets                             : [{
@@ -310,6 +314,9 @@ annotate KpiService.NAST with @(
             {Value : PDLVDF},
             {Value : DLVZN},
             {Value : ERNAM},
+            {Value : GEOLAT},
+            {Value : GEOLON},
+            {Value : KUNWE},
 
         ]}
     }
