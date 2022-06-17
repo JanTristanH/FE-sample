@@ -132,7 +132,7 @@
                             "viewName": "demo.analytical1.96.9.ext.view.MapView",
                             "type": "XML",
                             "sap.ui.generic.app": {
-                                "title": "MapFragment"
+                                "title": "Fragment"
                             },
                             "fragmentName": "demo.analytical1.96.9.ext.fragment.MapFragment"
                         }

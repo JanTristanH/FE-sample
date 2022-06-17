@@ -12,9 +12,9 @@
         <macros:Field readOnly="true" metaPath="AgencyID" id="custom-airline"/>  
     </HBox  -->
 
-		<vbm:GeoMap width="100%"
-			xmlns:l="sap.ui.layout" height="600px" initialPosition="{GEOLON};{GEOLAT};0" initialZoom="12" class="sapUiMediumMarginTop" mapConfiguration="{mapConfig>/}">
 			<!-- map config from https://embed.plnkr.co/plunk/k5ql5sUBbmmfJ0yU -->
+		<!-- <vbm:GeoMap width="100%"
+			xmlns:l="sap.ui.layout" height="600px" initialPosition="{GEOLON};{GEOLAT};0" initialZoom="12" class="sapUiMediumMarginTop" mapConfiguration="{mapConfig>/}">
 			<vbm:vos>
 				<vbm:Routes>
 				</vbm:Routes>
@@ -22,7 +22,8 @@
 					<vbm:Spot position="{GEOLON};{GEOLAT}" tooltip="{DOCNR}" labelType="Default" labelText="{DOCNR} -  {KUNWE}" labelPos="5" />
 				</vbm:Spots>
 			</vbm:vos>
-		</vbm:GeoMap>
+		</vbm:GeoMap> -->
+	<Label text="Extension Fragment :)"/>
 	</VBox>
 
 </core:FragmentDefinition>
