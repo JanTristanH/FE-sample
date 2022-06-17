@@ -42,30 +42,30 @@ service KpiService {
 
 annotate KpiService.Customers with @(
     Communication.Contact #identify1 : {title : KUNWE,
-                                        //org : mail,
-                                        // role : OrganizationRole,
-                                        // tel : [
-                                        //     {
-                                        //         type : #fax,
-                                        //         uri : FaxNumber
-                                        //     },
-                                        //     {
-                                        //         type : [ #work, #pref ],
-                                        //         uri : PhoneNumber
-                                        //     }
-                                        // ],
-                                        // email : [{
-                                        //     type    : #work,
-                                        //     address : mail
-                                        // }]
+                                                       //org : mail,
+                                                       // role : OrganizationRole,
+                                                       // tel : [
+                                                       //     {
+                                                       //         type : #fax,
+                                                       //         uri : FaxNumber
+                                                       //     },
+                                                       //     {
+                                                       //         type : [ #work, #pref ],
+                                                       //         uri : PhoneNumber
+                                                       //     }
+                                                       // ],
+                                                       // email : [{
+                                                       //     type    : #work,
+                                                       //     address : mail
+                                                       // }]
                                                 },
 
     UI                               : {
         LineItem            : [{
-                $Type          : 'UI.DataFieldWithUrl',
-                Url : 'forward.html',
-                Value: KUNWE,
-            },],
+            $Type : 'UI.DataFieldWithUrl',
+            Url   : 'forward.html',
+            Value : KUNWE,
+        }, ],
 
         HeaderInfo #header1 : {
             $Type          : 'UI.HeaderInfoType',
@@ -89,7 +89,7 @@ annotate KpiService.Customers with @(
 );
 
 
-annotate KpiService.NAST with {    
+annotate KpiService.NAST with {
     @Common.SemanticObject           : 'Movement'
     DOCNR;
 
@@ -115,7 +115,7 @@ annotate KpiService.NAST with {
                 ValueListProperty : 'DLVZN'
             }]
         },
-        FilterDefaultValue : 'HH_1'
+        FilterDefaultValue           : 'HH_1'
     }
     DLVZN  @(ValueList.entity : 'DlvznVH');
 
@@ -184,7 +184,7 @@ annotate KpiService.NAST with {
         }]
     }}
     //--> if enabled semanci date range filter is available, otherwise the chart will work
-    //@sap.filter.restriction: 'interval' 
+    //@sap.filter.restriction: 'interval'
     PDLVDF;
 };
 
@@ -196,42 +196,26 @@ annotate KpiService.NAST with @(
 
 
         // Define ctriticality and semantic colors for Visual filter QTY
-        DataPoint          #GrossQuantiy                : {
+        DataPoint #GrossQuantiy            : {
             $Type                  : 'UI.DataPointType',
-            Title : 'Gross Quantity',
+            Title                  : 'Gross Quantity',
             Value                  : DOCQTY,
-            TargetValue : 5000,
-            MinimumValue : 1000,
-            MaximumValue : 7000,
-            
+            TargetValue            : 5000,
+            MinimumValue           : 1000,
+            MaximumValue           : 7000,
+
             CriticalityCalculation : {
-                $Type : 'UI.CriticalityCalculationType',
-                ImprovementDirection : #Maximize,
-                AcceptanceRangeLowValue : 500,
+                $Type                    : 'UI.CriticalityCalculationType',
+                ImprovementDirection     : #Maximize,
+                AcceptanceRangeLowValue  : 500,
                 AcceptanceRangeHighValue : 1000,
-                ToleranceRangeLowValue: 400,
-                ToleranceRangeHighValue: 999,
-                DeviationRangeLowValue: 0,
-                DeviationRangeHighValue: 9999
+                ToleranceRangeLowValue   : 400,
+                ToleranceRangeHighValue  : 999,
+                DeviationRangeLowValue   : 0,
+                DeviationRangeHighValue  : 9999
             },
         },
-        DataPoint          #DOCNR                : {
-            $Type                  : 'UI.DataPointType',
-            Title : 'DOCNR',
-            Value                  : DOCNR,
-            
-        },
-        // KPI  : {
-        //     $Type : 'UI.KPIType',
-        //     SelectionVariant : {
-        //         $Type : 'UI.SelectionVariantType',
-        //         Record: 
-        //     },
-        //     DataPoint : {
-        //         $Type : 'UI.DataPointType',
-        //         Value : '@UI.DataPoint#GrossQuantiy',
-        //     },
-        // },
+
 
         SelectionFields                    : [
             DOCQTY,
@@ -314,9 +298,9 @@ annotate KpiService.NAST with @(
         LineItem                           : [
             {Value : DOCNR},
             {
-                $Type          : 'UI.DataFieldWithUrl',
-                Url : 'forward.html',
-                Value: DOCNR,
+                $Type : 'UI.DataFieldWithUrl',
+                Url   : 'forward.html',
+                Value : DOCNR,
             },
             {Value : DOCQTY},
             {Value : PSTYPE},
