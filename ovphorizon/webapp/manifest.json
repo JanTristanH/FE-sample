@@ -134,6 +134,18 @@
     "considerAnalyticalParameters": false,
     "cards": {
 
+      "card06": {
+				"model": "mainModel",
+				"template": "sap.ovp.cards.list",
+				"settings": {
+					"title": "card06_title",
+					"entitySet": "NAST",
+					"listType": "condensed",
+					"addODataSelect": false,
+					"dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#GrossQuantiy"
+				}
+			},
+
       "list01": {
         "model": "mainModel",
         "template": "sap.ovp.cards.list",

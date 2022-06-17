@@ -196,11 +196,42 @@ annotate KpiService.NAST with @(
 
 
         // Define ctriticality and semantic colors for Visual filter QTY
+        DataPoint          #GrossQuantiy                : {
+            $Type                  : 'UI.DataPointType',
+            Title : 'Gross Quantity',
+            Value                  : DOCQTY,
+            TargetValue : 5000,
+            MinimumValue : 1000,
+            MaximumValue : 7000,
+            
+            CriticalityCalculation : {
+                $Type : 'UI.CriticalityCalculationType',
+                ImprovementDirection : #Maximize,
+                AcceptanceRangeLowValue : 500,
+                AcceptanceRangeHighValue : 1000,
+                ToleranceRangeLowValue: 400,
+                ToleranceRangeHighValue: 999,
+                DeviationRangeLowValue: 0,
+                DeviationRangeHighValue: 9999
+            },
+        },
         DataPoint          #DOCNR                : {
             $Type                  : 'UI.DataPointType',
             Title : 'DOCNR',
             Value                  : DOCNR,
+            
         },
+        // KPI  : {
+        //     $Type : 'UI.KPIType',
+        //     SelectionVariant : {
+        //         $Type : 'UI.SelectionVariantType',
+        //         Record: 
+        //     },
+        //     DataPoint : {
+        //         $Type : 'UI.DataPointType',
+        //         Value : '@UI.DataPoint#GrossQuantiy',
+        //     },
+        // },
 
         SelectionFields                    : [
             DOCQTY,
