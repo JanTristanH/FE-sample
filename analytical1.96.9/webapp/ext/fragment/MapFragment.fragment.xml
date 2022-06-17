@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
-	xmlns:html="http://www.w3.org/1999	/xhtml" controllerName="demo.analytical1.96.9.ext.controller.MapView"
+	xmlns:html="http://www.w3.org/1999/xhtml" controllerName="demo.analytical1.96.9.ext.controller.MapView"
 	xmlns:vbm="sap.ui.vbm" displayBlock="true">
 	<VBox>
 
