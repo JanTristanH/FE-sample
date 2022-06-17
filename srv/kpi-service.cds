@@ -115,7 +115,7 @@ annotate KpiService.NAST with {
                 ValueListProperty : 'DLVZN'
             }]
         },
-        FilterDefaultValue           : 'HH_1'
+        //FilterDefaultValue           : 'HH_1'
     }
     DLVZN  @(ValueList.entity : 'DlvznVH');
 
