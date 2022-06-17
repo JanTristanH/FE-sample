@@ -216,6 +216,26 @@ annotate KpiService.NAST with @(
             },
         },
 
+        SelectionVariant #SVForQuantity : {
+    Parameters : [
+        {
+            $Type : 'UI.Parameter',
+            PropertyName : DOCUOM,
+            PropertyValue : 'L15'
+        },
+    ]
+},
+        KPI #KPIQuantity                   : {
+            DataPoint        : ![@UI.DataPoint#GrossQuantiy],
+            SelectionVariant : ![@UI.SelectionVariant#SVForQuantity],
+            ID               : 'ActualCostByGLAccountNameKPI',
+            Detail           : {
+                $Type                      : 'UI.KPIDetailType',
+                SemanticObject             : 'EPMProduct',
+                Action                     : 'manage_stta',
+                DefaultPresentationVariant : ![@UI.PresentationVariant#QtyByPstype]
+            }
+        },
 
         SelectionFields                    : [
             DOCQTY,
